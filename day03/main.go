@@ -33,7 +33,7 @@ func lines(s string) []string {
 
 func getMax(s string, start int, end int) (int, int) {
 	max := s[start]
-	joltPos := 0
+	joltPos := start
 	for idx, b := range []byte(s[start+1 : len(s)-end]) {
 		if b > max {
 			joltPos = idx + start + 1
@@ -69,8 +69,7 @@ func part1(input string) any {
 func part2(input string) any {
 	sum := 0
 	for _, ln := range lines(input) {
-		j := getJoltage(ln, 3)
-		fmt.Printf("jolts: %v\n", j)
+		j := getJoltage(ln, 12)
 		sum += j
 	}
 	return sum
@@ -83,7 +82,7 @@ func main() {
 	res1 := part1(in1)
 	fmt.Printf("Part 1: %v\n", res1)
 
-	in2 := readFile("example.input")
+	in2 := readFile("real.input")
 	res2 := part2(in2)
 	fmt.Printf("Part 2: %v\n", res2)
 }
